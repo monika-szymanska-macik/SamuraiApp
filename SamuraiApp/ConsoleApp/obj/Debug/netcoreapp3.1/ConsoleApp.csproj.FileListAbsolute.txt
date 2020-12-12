@@ -66,3 +66,8 @@ C:\Users\monik\source\repos\SamuraiApp\SamuraiApp\ConsoleApp\obj\Debug\netcoreap
 C:\Users\monik\source\repos\SamuraiApp\SamuraiApp\ConsoleApp\obj\Debug\netcoreapp3.1\ConsoleApp.genruntimeconfig.cache
 C:\Users\monik\source\repos\SamuraiApp\SamuraiApp\ConsoleApp\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\monik\source\repos\SamuraiApp\SamuraiApp\ConsoleApp\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\monik\source\repos\SamuraiApp\SamuraiApp\ConsoleApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\monik\source\repos\SamuraiApp\SamuraiApp\ConsoleApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\monik\source\repos\SamuraiApp\SamuraiApp\ConsoleApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\monik\source\repos\SamuraiApp\SamuraiApp\ConsoleApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Console.dll
+C:\Users\monik\source\repos\SamuraiApp\SamuraiApp\ConsoleApp\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
