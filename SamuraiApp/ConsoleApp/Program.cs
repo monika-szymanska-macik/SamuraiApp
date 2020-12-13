@@ -209,5 +209,63 @@ namespace ConsoleApp
                 newContext.SaveChanges();
             }
         }
+        private static void JoinBattleAndSamurai()
+        {
+            var sbJoin = new SamuraiBattle { SamuraiId = 1, BattleId = 3 };
+            _context.Add(sbJoin);
+            _context.SaveChanges();
+        }
+        private static void EnlistSamuraiIntoABattle()
+        {
+            var battle = _context.Battles.Find(1);
+            battle.SamuraiBattles
+                  .Add(new SamuraiBattle { SamuraiId = 21 });
+            _context.SaveChanges();
+        }
+        private static void RemoveJoinBetweenSamuraiAndBattleSimple()
+        {
+            var join = new SamuraiBattle { BattleId = 1, SamuraiId = 2 };
+            _context.Remove(join);
+            _context.SaveChanges();
+        }
+        private static void GetSamuraiWithBattles()
+        {
+
+            var samuraiWithBattle = _context.Samurais
+                .Include(s => s.SamuraiBattles)
+                .ThenInclude(sb => sb.Battle)
+                .FirstOrDefault(s => s.Id == 2);
+        }
+        private static void AddNewSamuraiWithHorse()
+        {
+            var samurai = new Samurai { Name = "Jina Ujichika" };
+            samurai.Horse = new Horse { Name = "Silver" };
+            _context.Samurais.Add(samurai);
+            _context.SaveChanges();
+        }
+        private static void AddNewHorseToSamuraiUsingId(int id)
+        {
+            var horse = new Horse { Name = "Flesh", SamuraiId = 2 };
+            _context.Add(horse);
+            _context.SaveChanges();
+        }
+        private static void GetHorseWithSamurai()
+        {
+            var horseWithoutSamurai = _context.Set<Horse>().Find(3);
+            var horseWithSamurai = _context.Samurais.Include(s => s.Horse).FirstOrDefault(s => s.Horse.Id == 3);
+            var horsesWthSamurai = _context.Samurais
+                .Where(s => s.Horse != null)
+                .Select(s => new { Horse = s.Horse, Samurai = s })
+                .ToList();
+        }
+        private static void GetSamuraiWithClan()
+        {
+            var samurai = _context.Samurais.Include(s => s.Clan).FirstOrDefault();
+        }
+        private static void GetClanWithSamura()
+        {
+            var clan = _context.Clans.Find(3);
+            var samuraiForClan = _context.Samurais.Where(s => s.Clan.Id == 3).ToList();
+        }
     }
 }
