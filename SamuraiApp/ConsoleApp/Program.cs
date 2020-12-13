@@ -192,5 +192,22 @@ namespace ConsoleApp
                 .Where(s => s.Quotes.Any(q => q.Text.Contains("happy")))
                 .ToList();
         }
+        private static void ModifyingRelatedDataWhenTracked()
+        {
+            var samurai = _context.Samurais.Include(s => s.Quotes).FirstOrDefault(s => s.Id == 2);
+            samurai.Quotes[0].Text = "Did you hear it ?";
+            _context.SaveChanges();
+        }
+        private static void ModifyingRelatedDataWhenNotTracked()
+        {
+            var samurai = _context.Samurais.Include(s => s.Quotes).FirstOrDefault(s => s.Id == 2);
+            var quote = samurai.Quotes[0];
+            quote.Text += "Did you hear it?";
+            using (var newContext = new SamuraiContext())
+            {
+                newContext.Quotes.Update(quote);
+                newContext.SaveChanges();
+            }
+        }
     }
 }
